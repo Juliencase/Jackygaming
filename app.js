@@ -50,4 +50,6 @@ app.get('/home/profile/edit_profile',user.editprofile);//call for edit profil pa
 app.post('/home/profile/edit_profile',user.editprofile);//call for edit profil post
 //Middleware
 
-app.listen(8080)
+app.listen(8080, function(
+  console.log("lancement sur le port 8080");
+))

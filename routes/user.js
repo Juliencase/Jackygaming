@@ -43,7 +43,7 @@ exports.login = function(req, res){
             res.redirect('/home/dashboard');
          }
          else{
-            message = 'Wrong Credentials.';
+            message = 'Pseudo/mot de passe incorrect.';
             res.render('index.ejs',{message: message});
          }
 
@@ -106,8 +106,8 @@ exports.editprofile=function(req,res){
       return;
     }
 
-    // var sql = UPDATE `users` SET 'first_name'='"+fname+"','last_name'='"+lname+"','mob_no'='"+mob+"','user_name'='"+name+"','password'='"+pass+"' WHERE 'ID'='userId';
-    // var sql = `UPDATE users SET first_name=${fname},last_name=${lname},mob_no=${mob},user_name=${name},password=${pass} WHERE ID=${userId}`
+    // var sql = "UPDATE `users` SET 'first_name'='"+fname+"','last_name'='"+lname+"','mob_no'='"+mob+"','user_name'='"+name+"','password'='"+pass+"' WHERE 'ID'='userId'";
+    var sql = `UPDATE users SET first_name='${fname}',last_name='${lname}',mob_no='${mob}',user_name='${name}',password='${pass}' WHERE ID='${userId}'`
 
     // (`first_name`,`last_name`,`mob_no`,`user_name`, `password`)
     //  SET ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')"

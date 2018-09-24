@@ -18,8 +18,4 @@ config.connect(function(err) {
     if (err) throw err;
     return(result);
   });
-
-  var server = app.listen(3000, function () {
-      console.log('Server is running..');
-    }
 )});
