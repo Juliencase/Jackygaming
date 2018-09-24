@@ -5,7 +5,8 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , routeHome = require('./routes/home.js')
 // var methodOverride = require('method-override');
 var session = require('express-session');
 var app = express();
@@ -14,18 +15,19 @@ var bodyParser = require("body-parser");
 var connection = mysql.createConnection({
               host     : 'localhost',
               user     : 'root',
-              password : 'Megalithe1234',
-              database : 'user'
+              password : 'maraudeurs',
+              database : 'jackygaming'
             });
 
 connection.connect();
 
-global.db = connection;
+// console.log(routeHome)
 
 // all environments
 app.set('port', process.env.PORT || 8080);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -43,11 +45,9 @@ app.get('/signup', user.signup);//call for signup page
 app.post('/signup', user.signup);//call for signup post
 app.get('/login', routes.index);//call for login page
 app.post('/login', user.login);//call for login post
-app.get('/home/dashboard', user.dashboard);//call for dashboard page after login
-app.get('/home/logout', user.logout);//call for logout
-app.get('/home/profile',user.profile);//to render users profile
-app.get('/home/profile/edit_profile',user.editprofile);//call for edit profil page
-app.post('/home/profile/edit_profile',user.editprofile);//call for edit profil post
+app.use('/home',routeHome)
 //Middleware
 
-app.listen(8080)
+app.listen(3000, function(){
+  console.log("Lancement port 3000")
+})
