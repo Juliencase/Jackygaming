@@ -17,14 +17,7 @@ var session = require('express-session')
 var app = express();
 var mysql = require('mysql');
 var bodyParser = require("body-parser");
-var connection = mysql.createConnection({
-              host     : 'localhost',
-              user     : 'root',
-              password : 'Megalithe1234',
-              database : 'user'
-            });
 
-connection.connect();
 
 // all environments
 app.set('port', process.env.PORT || 8080);
