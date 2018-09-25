@@ -15,8 +15,8 @@ router.get('/logout', logout.logout);//call for logout
 
 router.get('/profile',profile.profile);//to render users profile
 
-router.get('/profile/edit_profile',function(res,req){
-    res.render('profile.ejs')
+router.get('/profile/edit_profile',function(req,res){
+    res.render('edit_profile.ejs')
   });//call for edit profil page
 
 router.post('/profile/edit_profile',editProfile.editProfile);
